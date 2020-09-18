@@ -13,7 +13,7 @@ A helper class that can create ANY PSR-7 server request.
 ## Installation
 
 ```bash
-composer require nyholm/psr7-server
+composer require teraboxx/psr7-server
 ```
 
 ## Usage
@@ -34,5 +34,5 @@ $serverRequest = $creator->fromGlobals();
 
 ## Other packages
 
-* [nyholm/psr7](https://github.com/Nyholm/psr7) - A super fast PSR-7 implementation.
+* [terablaze/psr7](https://github.com/terablaze/psr7) - A super fast PSR-7 implementation.
 * [zendframework/zend-httphandlerrunner](https://github.com/zendframework/zend-httphandlerrunner) - To send/emit PSR-7 responses
