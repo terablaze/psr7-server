@@ -13,7 +13,7 @@ A helper class that can create ANY PSR-7 server request.
 ## Installation
 
 ```bash
-composer require teraboxx/psr7-server
+composer require terablaze/psr7-server
 ```
 
 ## Usage
