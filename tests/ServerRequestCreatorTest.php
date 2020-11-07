@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Nyholm\Psr7Server;
+namespace Tests\Terablaze\Psr7Server;
 
 use Nyholm\NSA;
-use Nyholm\Psr7\UploadedFile;
-use Nyholm\Psr7\Uri;
-use Nyholm\Psr7Server\ServerRequestCreator;
+use TeraBlaze\Psr7\UploadedFile;
+use TeraBlaze\Psr7\Uri;
+use TeraBlaze\Psr7Server\ServerRequestCreator;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -42,7 +42,7 @@ class ServerRequestCreatorTest extends TestCase
     protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
     {
         parent::setUp();
-        $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+        $psr17Factory = new \TeraBlaze\Psr7\Factory\Psr17Factory();
 
         $this->creator = new ServerRequestCreator(
             $psr17Factory,
@@ -562,7 +562,7 @@ class ServerRequestCreatorTest extends TestCase
      */
     public function testFailingStreamFromFile()
     {
-        $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+        $psr17Factory = new \TeraBlaze\Psr7\Factory\Psr17Factory();
         $psr17StreamFactory = $this->createMock(StreamFactoryInterface::class);
         $psr17StreamFactory->method('createStreamFromFile')
             ->will($this->throwException(new \RuntimeException()));

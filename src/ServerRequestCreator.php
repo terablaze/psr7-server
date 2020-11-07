@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Nyholm\Psr7Server;
+namespace TeraBlaze\Psr7Server;
 
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -16,6 +16,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  * @author Martijn van der Ven <martijn@vanderven.se>
+ * @author Tomiwa Ibiwoye <tomiwa@teraboxx.com>
  */
 class ServerRequestCreator implements ServerRequestCreatorInterface
 {
