@@ -19,13 +19,13 @@
         }
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.1 || ^8.0",
         "psr/http-message": "^1.0",
         "psr/http-factory": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0",
-        "terablaze/psr7": "^1.3",
+        "phpunit/phpunit": "^7.0 || ^8.5 || ^9.3",
+        "terablaze/psr7": "dev-master",
         "nyholm/nsa": "^1.1"
     },
     "autoload": {

@@ -33,13 +33,13 @@ class ServerRequestCreatorTest extends TestCase
         }
     }
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::initFiles();
     }
 
-    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
+    protected function setUp(): void
     {
         parent::setUp();
         $psr17Factory = new \TeraBlaze\Psr7\Factory\Psr17Factory();
@@ -506,7 +506,7 @@ class ServerRequestCreatorTest extends TestCase
     }
 
     /**
-     * Test from zendframework/zend-diactoros.
+     * Test from laminas/laminas-diactoros (formerly zendframework/zend-diactoros).
      */
     public function testMarshalsExpectedHeadersFromServerArray()
     {
@@ -538,7 +538,7 @@ class ServerRequestCreatorTest extends TestCase
     }
 
     /**
-     * Test from zendframework/zend-diactoros.
+     * Test from laminas/laminas-diactoros (formerly zendframework/zend-diactoros).
      */
     public function testMarshalsVariablesPrefixedByApacheFromServerArray()
     {
@@ -602,6 +602,9 @@ class ServerRequestCreatorTest extends TestCase
         $this->assertNull($instance->getParsedBody());
     }
 
+    /**
+     * @backupGlobals enabled
+     */
     public function testNoParsedBodyWithPOSTMethodWithoutContentType()
     {
         $_SERVER['REQUEST_METHOD'] = 'POST';
@@ -611,6 +614,7 @@ class ServerRequestCreatorTest extends TestCase
     }
 
     /**
+     * @backupGlobals enabled
      * @dataProvider dataContentTypesThatTriggerParsedBody
      */
     public function testParsedBodyWithPOSTMethodDifferentContentType($parsedBody, $contentType)
@@ -646,5 +650,17 @@ class ServerRequestCreatorTest extends TestCase
                 false, 'application/json',
             ],
         ];
+    }
+
+    /**
+     * @backupGlobals enabled
+     */
+    public function testNumericHeaderFromGlobals()
+    {
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+        $_SERVER['HTTP_1234'] = 'NumericHeader';
+
+        $server = $this->creator->fromGlobals();
+        $this->assertEquals(['1234' => ['NumericHeader']], $server->getHeaders());
     }
 }
